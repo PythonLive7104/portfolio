@@ -22,6 +22,7 @@ SECRET_KEY = _env_secret or 'django-insecure-dev-only-change-me'
 _debug_raw = (os.environ.get('DJANGO_DEBUG') or 'false').strip().lower()
 DEBUG = _debug_raw in ('1', 'true', 'yes', 'on')
 
+# Comma-separated. Must include every Host you use (domain, server IP). Missing host → DisallowedHost.
 _allowed = os.environ.get('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1').strip()
 ALLOWED_HOSTS = [h.strip() for h in _allowed.split(',') if h.strip()]
 
@@ -81,44 +82,27 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 
 
-# Database
+# Database — PostgreSQL only (configure POSTGRES_* in `.env`).
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-#
-# PostgreSQL when DATABASE_ENGINE=postgresql or POSTGRES_PASSWORD is set.
-# If neither is set, default to SQLite so `runserver` works without local Postgres.
-_explicit_db = (os.environ.get('DATABASE_ENGINE') or '').strip().lower()
-_has_pg_password = bool((os.environ.get('POSTGRES_PASSWORD') or '').strip())
-if _explicit_db == 'sqlite':
-    _database_engine = 'sqlite'
-elif _explicit_db == 'postgresql':
-    _database_engine = 'postgresql'
-elif _has_pg_password:
-    _database_engine = 'postgresql'
-else:
-    _database_engine = 'sqlite'
+_pg_options = {
+    'connect_timeout': int(os.environ.get('POSTGRES_CONNECT_TIMEOUT', '10')),
+}
+_postgres_sslmode = (os.environ.get('POSTGRES_SSLMODE') or '').strip()
+if _postgres_sslmode:
+    _pg_options['sslmode'] = _postgres_sslmode
 
-if _database_engine == 'sqlite':
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('POSTGRES_DB', 'portfolio'),
+        'USER': os.environ.get('POSTGRES_USER', 'portfolio'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', ''),
+        'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
+        'PORT': os.environ.get('POSTGRES_PORT', '5432'),
+        'CONN_MAX_AGE': int(os.environ.get('POSTGRES_CONN_MAX_AGE', '0')),
+        'OPTIONS': _pg_options,
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ.get('POSTGRES_DB', 'portfolio'),
-            'USER': os.environ.get('POSTGRES_USER', 'portfolio'),
-            'PASSWORD': os.environ.get('POSTGRES_PASSWORD', ''),
-            'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
-            'PORT': os.environ.get('POSTGRES_PORT', '5432'),
-            'CONN_MAX_AGE': int(os.environ.get('POSTGRES_CONN_MAX_AGE', '0')),
-            'OPTIONS': {
-                'connect_timeout': int(os.environ.get('POSTGRES_CONNECT_TIMEOUT', '10')),
-            },
-        }
-    }
+}
 
 
 # Password validation
