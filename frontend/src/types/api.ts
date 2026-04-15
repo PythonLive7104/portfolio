@@ -8,6 +8,10 @@ export interface SiteProfile {
   profile_image_alt: string
   /** Absolute URL to uploaded PDF resume, or null if none. */
   resume_url: string | null
+  /** Full URLs; empty when unset in admin. */
+  github_url: string
+  linkedin_url: string
+  contact_email: string
 }
 
 export interface TechBadge {

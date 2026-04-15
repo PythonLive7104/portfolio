@@ -25,6 +25,23 @@ class SiteProfile(models.Model):
         validators=[FileExtensionValidator(['pdf'])],
         help_text='PDF resume. Shown on the public Resume page and linked from the site navigation.',
     )
+    github_url = models.URLField(
+        max_length=500,
+        blank=True,
+        default='',
+        help_text='Full URL to your GitHub profile (e.g. https://github.com/yourname).',
+    )
+    linkedin_url = models.URLField(
+        max_length=500,
+        blank=True,
+        default='',
+        help_text='Full URL to your LinkedIn profile.',
+    )
+    contact_email = models.EmailField(
+        blank=True,
+        default='',
+        help_text='Shown in the footer and Contact page for mailto: links.',
+    )
 
     class Meta:
         verbose_name = 'Site profile'

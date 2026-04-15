@@ -4,7 +4,7 @@ import { useSiteProfile } from '../context/SiteProfileContext'
 const year = new Date().getFullYear()
 
 export function Footer() {
-  const { profile } = useSiteProfile()
+  const { profile, ready } = useSiteProfile()
 
   return (
     <footer className="border-t border-white/[0.06] bg-zinc-950">
@@ -52,31 +52,44 @@ export function Footer() {
           <div>
             <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Social</h3>
             <ul className="mt-4 space-y-2 text-sm text-zinc-400">
-              <li>
-                <a
-                  href="https://github.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="transition-colors hover:text-white"
-                >
-                  GitHub
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="transition-colors hover:text-white"
-                >
-                  LinkedIn
-                </a>
-              </li>
-              <li>
-                <a href="mailto:hello@example.com" className="transition-colors hover:text-white">
-                  Email
-                </a>
-              </li>
+              {profile?.github_url ? (
+                <li>
+                  <a
+                    href={profile.github_url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="transition-colors hover:text-white"
+                  >
+                    GitHub
+                  </a>
+                </li>
+              ) : null}
+              {profile?.linkedin_url ? (
+                <li>
+                  <a
+                    href={profile.linkedin_url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="transition-colors hover:text-white"
+                  >
+                    LinkedIn
+                  </a>
+                </li>
+              ) : null}
+              {profile?.contact_email ? (
+                <li>
+                  <a href={`mailto:${profile.contact_email}`} className="transition-colors hover:text-white">
+                    Email
+                  </a>
+                </li>
+              ) : null}
+              {ready &&
+              profile &&
+              !profile.github_url &&
+              !profile.linkedin_url &&
+              !profile.contact_email ? (
+                <li className="text-zinc-600">Add links in Django admin → Site profile.</li>
+              ) : null}
             </ul>
           </div>
         </div>

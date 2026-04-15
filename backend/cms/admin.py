@@ -53,6 +53,13 @@ class SiteProfileAdmin(admin.ModelAdmin):
                 'description': 'Upload a PDF. It appears on the site Resume page and in the nav when set.',
             },
         ),
+        (
+            'Social & contact',
+            {
+                'fields': ('github_url', 'linkedin_url', 'contact_email'),
+                'description': 'Public links for the footer and Contact page. Use full URLs for GitHub and LinkedIn.',
+            },
+        ),
     )
 
     def has_add_permission(self, request):

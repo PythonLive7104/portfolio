@@ -90,7 +90,14 @@ class SiteProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = SiteProfile
-        fields = ['profile_image_url', 'profile_image_alt', 'resume_url']
+        fields = [
+            'profile_image_url',
+            'profile_image_alt',
+            'resume_url',
+            'github_url',
+            'linkedin_url',
+            'contact_email',
+        ]
 
     def get_profile_image_url(self, obj: SiteProfile):
         request = self.context.get('request')

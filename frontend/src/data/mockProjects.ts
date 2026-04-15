@@ -4,6 +4,9 @@ export const mockSiteProfile: SiteProfile = {
   profile_image_url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=640&h=640&fit=crop',
   profile_image_alt: 'Portrait placeholder for local mock data',
   resume_url: null,
+  github_url: 'https://github.com',
+  linkedin_url: 'https://linkedin.com',
+  contact_email: 'hello@example.com',
 }
 
 export const techStackHome: TechBadge[] = [
