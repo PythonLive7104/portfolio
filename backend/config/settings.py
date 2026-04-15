@@ -92,7 +92,16 @@ WSGI_APPLICATION = 'config.wsgi.application'
 _pg_options = {
     'connect_timeout': int(os.environ.get('POSTGRES_CONNECT_TIMEOUT', '10')),
 }
-_postgres_sslmode = (os.environ.get('POSTGRES_SSLMODE') or '').strip()
+# libpq expects: disable, allow, prefer, require, verify-ca, verify-full.
+# Linode / some UIs emit ENABLED or TRUE — map those to require.
+_raw_ssl = (os.environ.get('POSTGRES_SSLMODE') or '').strip()
+_ssl_norm = _raw_ssl.lower().replace('-', '_')
+if _ssl_norm in ('enabled', 'true', 'yes', 'on', '1', 'ssl'):
+    _postgres_sslmode = 'require'
+elif _raw_ssl:
+    _postgres_sslmode = _raw_ssl
+else:
+    _postgres_sslmode = ''
 if _postgres_sslmode:
     _pg_options['sslmode'] = _postgres_sslmode
 
