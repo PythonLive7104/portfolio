@@ -15,9 +15,9 @@ load_dotenv(BASE_DIR / '.env')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # If DJANGO_SECRET_KEY is set but empty, Django signing (sessions, CSRF, admin) breaks → 500 errors.
-DJANGO_DEBUG = True
-DJANGO_SECRET_KEY=os.environ.get('DJANGO_SECRET_KEY', '').strip()
-ALLOWED_HOSTS=os.environ.get('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1').strip().split(',')
+DJANGO_DEBUG = os.environ.get('DJANGO_DEBUG').strip()
+DJANGO_SECRET_KEY=os.environ.get('DJANGO_SECRET_KEY').strip()
+ALLOWED_HOSTS=os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').strip().split(',')
 
 
 # Application definition
