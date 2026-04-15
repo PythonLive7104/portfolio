@@ -149,6 +149,18 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+# API media URLs: if unset, serializers return path-only "/media/..." so the browser uses the same
+# host as the SPA (nginx). That fixes images on the landing page when build_absolute_uri() would
+# otherwise use an internal Docker hostname (e.g. http://backend:8000/media/...).
+# Set to your public origin if needed, e.g. https://yourdomain.com (no trailing slash).
+PUBLIC_BASE_URL = os.environ.get('DJANGO_PUBLIC_BASE_URL', '').strip().rstrip('/')
+MEDIA_USE_RELATIVE_URLS = os.environ.get('DJANGO_MEDIA_USE_RELATIVE_URLS', 'true').strip().lower() in (
+    '1',
+    'true',
+    'yes',
+    'on',
+)
+
 _cors = os.environ.get('DJANGO_CORS_ORIGINS', '').strip()
 if _cors:
     CORS_ALLOWED_ORIGINS = [o.strip() for o in _cors.split(',') if o.strip()]
