@@ -8,11 +8,10 @@ services:
       - .env
     ports:
       - "8000:8000"
+    # Do not repeat DJANGO_* here with ${VAR} — empty compose substitution overrides env_file and
+    # breaks ALLOWED_HOSTS / SECRET_KEY. Django settings come from `env_file` above.
     environment:
       - DJANGO_SETTINGS_MODULE=config.settings
-      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
-      - DJANGO_DEBUG=${DJANGO_DEBUG}
-      - DJANGO_ALLOWED_HOSTS=${DJANGO_ALLOWED_HOSTS}
     volumes:
       - static_volume:/app/staticfiles
       - media_volume:/app/media

@@ -6,9 +6,14 @@ from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Root `.env` (docker-compose / shared secrets), then `backend/.env` (overrides).
-load_dotenv(BASE_DIR.parent / '.env')
-load_dotenv(BASE_DIR / '.env', override=True)
+# Local dev: load repo root `.env` then `backend/.env` (backend wins).
+# In Docker, env comes from Compose `env_file` — must NOT let `/app/.env` override=True stomp those vars
+# (a copied `.env` in the image would replace DJANGO_ALLOWED_HOSTS and cause DisallowedHost).
+_compose_parent = BASE_DIR.parent
+if (_compose_parent / 'docker-compose.yml').exists() or (_compose_parent / 'compose.yml').exists():
+    load_dotenv(_compose_parent / '.env')
+_docker = Path('/.dockerenv').exists()
+load_dotenv(BASE_DIR / '.env', override=not _docker)
 
 
 # Quick-start development settings - unsuitable for production

@@ -1,0 +1,9 @@
+# Local secrets — Compose `env_file` supplies runtime env; baking `.env` caused DisallowedHost
+# when it overwrote DJANGO_ALLOWED_HOSTS in settings.load_dotenv(..., override=True).
+.env
+__pycache__
+*.pyc
+.git
+venv
+.pytest_cache
+db.sqlite3
