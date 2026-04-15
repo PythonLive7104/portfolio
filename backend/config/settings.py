@@ -6,7 +6,9 @@ from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-load_dotenv(BASE_DIR / '.env')
+# Root `.env` (docker-compose / shared secrets), then `backend/.env` (overrides).
+load_dotenv(BASE_DIR.parent / '.env')
+load_dotenv(BASE_DIR / '.env', override=True)
 
 
 # Quick-start development settings - unsuitable for production
@@ -82,8 +84,18 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 #
-# Default: PostgreSQL (psycopg v3). Set DATABASE_ENGINE=sqlite to use SQLite instead.
-_database_engine = os.environ.get('DATABASE_ENGINE', 'postgresql').strip().lower()
+# PostgreSQL when DATABASE_ENGINE=postgresql or POSTGRES_PASSWORD is set.
+# If neither is set, default to SQLite so `runserver` works without local Postgres.
+_explicit_db = (os.environ.get('DATABASE_ENGINE') or '').strip().lower()
+_has_pg_password = bool((os.environ.get('POSTGRES_PASSWORD') or '').strip())
+if _explicit_db == 'sqlite':
+    _database_engine = 'sqlite'
+elif _explicit_db == 'postgresql':
+    _database_engine = 'postgresql'
+elif _has_pg_password:
+    _database_engine = 'postgresql'
+else:
+    _database_engine = 'sqlite'
 
 if _database_engine == 'sqlite':
     DATABASES = {
