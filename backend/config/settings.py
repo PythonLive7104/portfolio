@@ -159,6 +159,11 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+# Admin uploads (image + PDF). Django default is 2.5MB; nginx uses client_max_body_size 25M.
+_data_upload_max = int(os.environ.get('DJANGO_DATA_UPLOAD_MAX_BYTES', str(26 * 1024 * 1024)))
+DATA_UPLOAD_MAX_MEMORY_SIZE = _data_upload_max
+FILE_UPLOAD_MAX_MEMORY_SIZE = min(10 * 1024 * 1024, _data_upload_max)
+
 # API media URLs: if unset, serializers return path-only "/media/..." so the browser uses the same
 # host as the SPA (nginx). That fixes images on the landing page when build_absolute_uri() would
 # otherwise use an internal Docker hostname (e.g. http://backend:8000/media/...).
