@@ -1,15 +1,34 @@
 /**
  * Central place for Django REST Framework calls.
  *
- * Set `VITE_API_URL` (e.g. in `.env.development`) to use your API.
- * If it is unset, the app uses bundled mock data from `data/mockProjects`.
+ * **Production (nginx + `/api` proxy):** set `VITE_API_URL=/api` (or leave unset in production
+ * builds — we default to `/api`). The browser then calls the same host as the page, avoiding
+ * "Failed to fetch" from bad hosts like `127.0.0.1` or `backend` inside Docker.
+ *
+ * **Local dev:** use `VITE_API_URL=http://127.0.0.1:8000/api` in `.env.development`, or leave
+ * unset and use mock data (see `VITE_USE_MOCK`).
  */
 
 import type { ProjectDetail, ProjectListItem, SiteProfile, TechBadge, Testimonial } from '../types/api'
 import { mockProjects, mockSiteProfile, mockTestimonials, techStackHome } from '../data/mockProjects'
 
-const API_BASE = (import.meta.env.VITE_API_URL ?? '').replace(/\/$/, '')
-const USE_MOCK = !API_BASE
+const raw = (import.meta.env.VITE_API_URL ?? '').trim().replace(/\/$/, '')
+
+/** Bundled JSON, no network (local dev without backend). */
+const USE_MOCK =
+  import.meta.env.VITE_USE_MOCK === 'true' || (raw === '' && import.meta.env.DEV)
+
+/**
+ * Resolved API base. Same-origin `/api` when deployed behind nginx; never use localhost/backend
+ * in env for a site served on a public IP/domain — the user's browser cannot reach your Docker network.
+ */
+const API_BASE = USE_MOCK
+  ? ''
+  : raw || (import.meta.env.PROD ? '/api' : 'http://127.0.0.1:8000/api')
+
+export const isUsingMockData = USE_MOCK
+/** For error messages / debugging */
+export const resolvedApiBase = API_BASE || '(mock)'
 
 function apiUrl(path: string): string {
   const p = path.startsWith('/') ? path : `/${path}`
@@ -54,7 +73,6 @@ export async function fetchFeaturedProjects(limit = 3): Promise<ProjectListItem[
   if (featured.length > 0) {
     return featured.slice(0, limit)
   }
-  // No rows with Featured checked in admin — show newest list order so the section is not empty.
   const allData = await getJson<PaginatedWrapper<ProjectListItem>>('/projects/')
   const all = normalizeList(allData)
     .slice()

@@ -21,7 +21,8 @@ services:
     ports:
       - "5173:5173"
     environment:
-      - VITE_API_URL=${VITE_API_URL}
+      # Same-origin /api so the browser hits nginx (not 127.0.0.1 or docker service names).
+      - VITE_API_URL=${VITE_API_URL:-/api}
     depends_on:
       - backend
     volumes:

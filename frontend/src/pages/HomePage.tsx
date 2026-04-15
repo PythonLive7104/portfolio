@@ -7,7 +7,13 @@ import { ProjectGrid } from '../components/ProjectGrid'
 import { TechStackGrid } from '../components/TechStackGrid'
 import { TestimonialCard } from '../components/TestimonialCard'
 import { useSiteProfile } from '../context/SiteProfileContext'
-import { fetchFeaturedProjects, fetchHomeTechStack, fetchTestimonials } from '../lib/apiClient'
+import {
+  fetchFeaturedProjects,
+  fetchHomeTechStack,
+  fetchTestimonials,
+  isUsingMockData,
+  resolvedApiBase,
+} from '../lib/apiClient'
 import { mediaUrlForClient } from '../lib/mediaUrl'
 import type { ProjectListItem, TechBadge, Testimonial } from '../types/api'
 
@@ -57,10 +63,11 @@ export function HomePage() {
       {loadError && (
         <div className="mx-auto max-w-6xl px-4 pt-6 sm:px-6 lg:px-8">
           <p className="rounded-xl border border-amber-500/25 bg-amber-500/10 px-4 py-3 text-sm text-amber-100">
-            {loadError}. Ensure the Django API is running at{' '}
-            <span className="font-mono text-amber-50/90">{import.meta.env.VITE_API_URL ?? '(set VITE_API_URL)'}</span>
-            , or remove <span className="font-mono">VITE_API_URL</span> from{' '}
-            <span className="font-mono">.env.development</span> to use built-in mock data.
+            {loadError}. API base in this build:{' '}
+            <span className="font-mono text-amber-50/90">{resolvedApiBase}</span>
+            {isUsingMockData
+              ? ' (mock data mode).'
+              : '. On the server, set VITE_API_URL=/api (same origin as nginx) — not localhost or backend.'}
           </p>
         </div>
       )}
