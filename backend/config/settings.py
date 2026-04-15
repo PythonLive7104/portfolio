@@ -1,4 +1,3 @@
-
 import os
 from pathlib import Path
 
@@ -14,12 +13,27 @@ load_dotenv(BASE_DIR / '.env')
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# If DJANGO_SECRET_KEY is set but empty, Django signing (sessions, CSRF, admin) breaks → 500 errors.
-DJANGO_DEBUG = os.environ.get('DJANGO_DEBUG').strip()
-DJANGO_SECRET_KEY=os.environ.get('DJANGO_SECRET_KEY').strip()
-ALLOWED_HOSTS=os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1,172.237.96.41').strip().split(',')
+# Django reads `SECRET_KEY` (not DJANGO_SECRET_KEY). Empty key breaks sessions, CSRF, admin → 500.
+_env_secret = (os.environ.get('DJANGO_SECRET_KEY') or os.environ.get('SECRET_KEY') or '').strip()
+SECRET_KEY = _env_secret or 'django-insecure-dev-only-change-me'
 
-CORS_ALLOWED_ORIGINS = ['http://172.237.96.41','http://localhost:5173']
+_debug_raw = (os.environ.get('DJANGO_DEBUG') or 'false').strip().lower()
+DEBUG = _debug_raw in ('1', 'true', 'yes', 'on')
+
+_allowed = os.environ.get('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1').strip()
+ALLOWED_HOSTS = [h.strip() for h in _allowed.split(',') if h.strip()]
+
+# Behind nginx / reverse proxy (correct Host, scheme for CSRF, admin)
+USE_X_FORWARDED_HOST = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Admin login + CSRF when using a public host or IP (Django 4+)
+_csrf_extra = os.environ.get('DJANGO_CSRF_TRUSTED_ORIGINS', '').strip()
+CSRF_TRUSTED_ORIGINS = [o.strip() for o in _csrf_extra.split(',') if o.strip()]
+if not CSRF_TRUSTED_ORIGINS:
+    # Safe default for http://your-server-ip during first deploy; override via env for HTTPS domains
+    CSRF_TRUSTED_ORIGINS = [f'http://{h}' for h in ALLOWED_HOSTS if h and not h.startswith('.')]
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -135,12 +149,14 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-
-
-CORS_ALLOWED_ORIGINS = [
-    'http://127.0.0.1:5173',
-    'http://localhost:5173',
-]
+_cors = os.environ.get('DJANGO_CORS_ORIGINS', '').strip()
+if _cors:
+    CORS_ALLOWED_ORIGINS = [o.strip() for o in _cors.split(',') if o.strip()]
+else:
+    CORS_ALLOWED_ORIGINS = [
+        'http://127.0.0.1:5173',
+        'http://localhost:5173',
+    ]
 CORS_ALLOW_CREDENTIALS = True
 
 REST_FRAMEWORK = {
