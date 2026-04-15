@@ -17,9 +17,9 @@ load_dotenv(BASE_DIR / '.env')
 # If DJANGO_SECRET_KEY is set but empty, Django signing (sessions, CSRF, admin) breaks → 500 errors.
 DJANGO_DEBUG = os.environ.get('DJANGO_DEBUG').strip()
 DJANGO_SECRET_KEY=os.environ.get('DJANGO_SECRET_KEY').strip()
-ALLOWED_HOSTS=os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').strip().split(',')
+ALLOWED_HOSTS=os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1,172.237.96.41').strip().split(',')
 
-
+CORS_ALLOWED_ORIGINS = ['http://172.237.96.41','http://localhost:5173']
 # Application definition
 
 INSTALLED_APPS = [
