@@ -3,6 +3,9 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+    # Load `/opt/portfolio/.env` so Django sees POSTGRES_*, DATABASE_ENGINE, etc. (not only DJANGO_*).
+    env_file:
+      - .env
     ports:
       - "8000:8000"
     environment:

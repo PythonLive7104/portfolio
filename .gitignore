@@ -1,0 +1,8 @@
+# Local secrets — never commit (use .env.example as a template)
+.env
+.env.local
+.env.*.local
+
+# OS / editor
+Thumbs.db
+.DS_Store
