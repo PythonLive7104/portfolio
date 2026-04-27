@@ -110,10 +110,6 @@ export function HomePage() {
           <h2 id="testimonials-heading" className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
             What partners say
           </h2>
-          <p className="mt-3 max-w-2xl text-zinc-400">
-            Testimonials mirror how you might load `Testimonial` records from DRF — typed and ready to swap for
-            API data.
-          </p>
           {loading ? (
             <div className="mt-12 grid gap-6 md:grid-cols-3">
               {[1, 2, 3].map((i) => (
