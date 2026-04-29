@@ -28,8 +28,8 @@ export const mockTestimonials: Testimonial[] = [
   {
     id: 't1',
     quote:
-      'Shipped our billing portal and admin dashboards ahead of schedule. The API design with DRF made our mobile team productive on day one.',
-    author_name: 'Clara M.',
+      'The API design with DRF made the team productive on day one.',
+    author_name: 'Helen Obi',
     author_role: 'Product Manager',
     author_company: 'MailionDev',
     avatar_url: '',
@@ -37,8 +37,8 @@ export const mockTestimonials: Testimonial[] = [
   {
     id: 't2',
     quote:
-      'Exceptional full-stack craftsmanship — React UX that feels premium and a Django backend that scales. Exactly what we needed for our SaaS pivot.',
-    author_name: 'Stephen K.',
+      'Exactly what we needed for our SaaS pivot. We found your work pleasing and satisfactory.',
+    author_name: 'John',
     author_role: 'CTO',
     author_company: '',
     avatar_url: '',
@@ -46,8 +46,8 @@ export const mockTestimonials: Testimonial[] = [
   {
     id: 't3',
     quote:
-      'Clear communication, strong system design, and pragmatic AI integrations. Our customers noticed the polish immediately.',
-    author_name: 'Angela M.',
+      'Our customers noticed the polish immediately. Your work is pleasing and satisfactory.',
+    author_name: 'Mr. David',
     author_role: 'Founder',
     author_company: 'CompetitorIQ',
     avatar_url: '',
