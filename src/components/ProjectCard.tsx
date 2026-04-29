@@ -130,7 +130,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
             </a>
             <Link
               to={`/projects/${project.slug}`}
-              className="ml-auto inline-flex items-center gap-1 text-sm font-medium text-white/90 opacity-0 transition-all duration-300 group-hover:opacity-100"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-sky-400 transition-colors hover:text-sky-300"
+              onClick={(e) => e.stopPropagation()}
             >
               Case study
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
