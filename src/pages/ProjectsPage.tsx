@@ -41,9 +41,9 @@ export function ProjectsPage() {
             </p>
           )}
           {loading ? (
-            <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {[1, 2, 3].map((i) => (
-                <div key={i} className="h-[420px] animate-pulse rounded-2xl border border-white/5 bg-zinc-900/50" />
+                <div key={i} className="min-h-[560px] animate-pulse rounded-2xl border border-white/5 bg-zinc-900/50" />
               ))}
             </div>
           ) : (

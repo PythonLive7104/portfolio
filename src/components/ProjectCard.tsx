@@ -5,7 +5,32 @@ interface ProjectCardProps {
   project: ProjectListItem
 }
 
+function CaseStudyBlock({
+  label,
+  children,
+  clampClass = 'line-clamp-2',
+}: {
+  label: string
+  children: React.ReactNode
+  clampClass?: string
+}) {
+  return (
+    <div>
+      <p className="text-[11px] font-semibold uppercase tracking-wide text-zinc-500">{label}</p>
+      <div className={`mt-1 text-sm leading-relaxed text-zinc-400 ${clampClass}`}>{children}</div>
+    </div>
+  )
+}
+
 export function ProjectCard({ project }: ProjectCardProps) {
+  const hasCaseStudy =
+    typeof project.problem === 'string' &&
+    project.problem.length > 0 &&
+    typeof project.solution === 'string' &&
+    project.solution.length > 0
+
+  const featurePreview = project.features?.slice(0, 3) ?? []
+
   return (
     <article className="group relative">
       <div className="gradient-border relative h-full overflow-hidden rounded-2xl bg-zinc-900/40 ring-1 ring-white/[0.05] transition-all duration-500 hover:-translate-y-1 hover:ring-sky-500/20">
@@ -36,7 +61,39 @@ export function ProjectCard({ project }: ProjectCardProps) {
           <h3 className="text-lg font-semibold tracking-tight text-white transition-colors group-hover:text-sky-300">
             {project.title}
           </h3>
-          <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-zinc-400">{project.short_description}</p>
+
+          {hasCaseStudy ? (
+            <div className="mt-4 space-y-3">
+              <CaseStudyBlock label="Problem">{project.problem}</CaseStudyBlock>
+              <CaseStudyBlock label="What I built">{project.solution}</CaseStudyBlock>
+              {featurePreview.length > 0 ? (
+                <div>
+                  <p className="text-[11px] font-semibold uppercase tracking-wide text-zinc-500">Key features</p>
+                  <ul className="mt-2 space-y-1.5">
+                    {featurePreview.map((f) => (
+                      <li key={f} className="flex gap-2 text-sm leading-snug text-zinc-400">
+                        <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-sky-500/80" aria-hidden />
+                        <span className="line-clamp-2">{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  {(project.features?.length ?? 0) > 3 ? (
+                    <p className="mt-1 text-xs text-zinc-600">
+                      +{(project.features?.length ?? 0) - 3} more in case study
+                    </p>
+                  ) : null}
+                </div>
+              ) : null}
+              {project.result ? (
+                <CaseStudyBlock label="Result" clampClass="line-clamp-2">
+                  {project.result}
+                </CaseStudyBlock>
+              ) : null}
+            </div>
+          ) : (
+            <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-zinc-400">{project.short_description}</p>
+          )}
+
           <div className="mt-5 flex flex-wrap items-center gap-3">
             <a
               href={project.live_demo_url}

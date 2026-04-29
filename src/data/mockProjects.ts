@@ -32,7 +32,7 @@ export const mockTestimonials: Testimonial[] = [
     author_name: 'Clara M.',
     author_role: 'Product Manager',
     author_company: 'MailionDev',
-    avatar_url: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=128&h=128&fit=crop',
+    avatar_url: '',
   },
   {
     id: 't2',
@@ -41,7 +41,7 @@ export const mockTestimonials: Testimonial[] = [
     author_name: 'Stephen K.',
     author_role: 'CTO',
     author_company: '',
-    avatar_url: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=128&h=128&fit=crop',
+    avatar_url: '',
   },
   {
     id: 't3',
@@ -50,7 +50,7 @@ export const mockTestimonials: Testimonial[] = [
     author_name: 'Angela M.',
     author_role: 'Founder',
     author_company: 'CompetitorIQ',
-    avatar_url: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=128&h=128&fit=crop',
+    avatar_url: '',
   },
 ]
 
@@ -79,7 +79,7 @@ export const mockProjects: ProjectDetail[] = [
     problem:
       'Email bounce rate is a major issue for many businesses. It can lead to lost revenue, low open rates, and poor customer engagement.',
     solution:
-      'Built a React SPA on a versioned Django API with EmailListVerify API, Redis, and PostgreSQL.',
+      'Built a SaaS landing page with Django, EmailListVerify API, Redis, and PostgreSQL.',
     features: [
       'Deliverability check with EmailListVerify API',
       'Bounce rate analysis and optimization',
@@ -87,6 +87,8 @@ export const mockProjects: ProjectDetail[] = [
       'Email tracking and analytics',
       'Email reporting and insights',
     ],
+    result:
+      'Landing, auth, and dashboard flows tied to Paystack — teams get actionable bounce visibility without babysitting spreadsheets.',
     screenshots: [
       {
         id: 's1',
@@ -125,7 +127,7 @@ export const mockProjects: ProjectDetail[] = [
     slug: 'Jobcrafts',
     title: 'JobcraftsAI',
     short_description:
-      'This is a job search platform that uses AI to help you optimize your job search.',
+      'AI job platform that helps users optimize resumes and increase interview chances — built with OpenAI + subscription billing.',
     image_url:
       '/images/JobCrafts-homepage.jpg',
     tech_stack: [
@@ -142,11 +144,11 @@ export const mockProjects: ProjectDetail[] = [
     featured: true,
     order: 2,
     overview:
-      'This product is a job search platform that uses AI to help you optimize your job search.',
+      'AI-assisted resume and interview prep with subscription tiers — OpenAI workflows plus Paystack for recurring revenue.',
     problem:
       'Many job seekers struggle to find the right job for them. They often waste time searching for jobs that are not a good fit.',
     solution:
-      'Built a React SPA on a versioned Django API with OpenAI, Redis, and PostgreSQL.',
+      'Built a Django API with OpenAI, Redis, and PostgreSQL and used React for the frontend.',
     features: [
       'Optimize resume for job applications',
       'ATS score analysis and optimization',
@@ -156,6 +158,8 @@ export const mockProjects: ProjectDetail[] = [
       'Job search analytics and insights',
       'Shareable personal portfolio and resume',
     ],
+    result:
+      'End-to-end SaaS with gated Pro features and billing — users ship stronger applications while subscriptions stay predictable in production.',
     screenshots: [
       {
         id: 's1',
@@ -212,7 +216,7 @@ export const mockProjects: ProjectDetail[] = [
     problem:
       'Many businesses struggle to analyze and understand their competitors. They often waste time searching for information that is not available.',
     solution:
-      'Built a React SPA on a versioned Django API with Proxy API, Scraper API, and PostgreSQL.',
+      'Built a Django API with Proxy API, Scraper API, and PostgreSQL and used React for the frontend.',
     features: [
       'Competitor analysis and intelligence',
       'Competitor tracking and monitoring',
@@ -223,6 +227,8 @@ export const mockProjects: ProjectDetail[] = [
       'Competitor reporting and insights',
       'Competitor analytics and insights',
     ],
+    result:
+      'Unified competitor workspace with AI summaries and Paystack-backed plans — research time drops while intelligence stays current.',
     screenshots: [
       {
         id: 's1',

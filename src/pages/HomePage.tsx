@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { CapabilitiesSection } from '../components/CapabilitiesSection'
 import { CTASection } from '../components/CTASection'
 import { HeroSection } from '../components/HeroSection'
+import { HomeOfferSections } from '../components/HomeOfferSections'
 import { ProjectGrid } from '../components/ProjectGrid'
 import { TechStackGrid } from '../components/TechStackGrid'
 import { TestimonialCard } from '../components/TestimonialCard'
@@ -60,6 +61,7 @@ export function HomePage() {
         profileImageAlt={siteProfile?.profile_image_alt}
       />
       <TechStackGrid items={homeTech} />
+      <HomeOfferSections />
       {loadError && (
         <div className="mx-auto max-w-6xl px-4 pt-6 sm:px-6 lg:px-8">
           <p className="rounded-xl border border-amber-500/25 bg-amber-500/10 px-4 py-3 text-sm text-amber-100">
@@ -77,8 +79,7 @@ export function HomePage() {
             <div>
               <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Featured projects</h2>
               <p className="mt-3 max-w-xl text-zinc-400">
-                Selected case studies across billing, operations, and client portals — each built with React
-                frontends and Django/DRF backends.
+                Case studies — problem, build, key features, and results — across billing, AI, and client-facing SaaS.
               </p>
             </div>
             <Link
@@ -90,11 +91,11 @@ export function HomePage() {
           </div>
           <div className="mt-12">
             {loading ? (
-              <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+              <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
                 {[1, 2, 3].map((i) => (
                   <div
                     key={i}
-                    className="h-[420px] animate-pulse rounded-2xl border border-white/5 bg-zinc-900/50"
+                    className="min-h-[560px] animate-pulse rounded-2xl border border-white/5 bg-zinc-900/50"
                   />
                 ))}
               </div>

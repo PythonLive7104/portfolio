@@ -110,12 +110,11 @@ export function ProjectDetailPage() {
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mt-16 max-w-none">
-          <ContentBlock title="Overview" body={project.overview} />
           <ContentBlock title="Problem" body={project.problem} />
-          <ContentBlock title="Solution" body={project.solution} />
+          <ContentBlock title="What I built" body={project.solution} />
 
           <section className="mt-14">
-            <h2 className="text-xl font-semibold text-white">Features</h2>
+            <h2 className="text-xl font-semibold text-white">Key features</h2>
             <ul className="mt-4 space-y-3 text-zinc-300">
               {project.features.map((f) => (
                 <li key={f} className="flex gap-3">
@@ -125,6 +124,8 @@ export function ProjectDetailPage() {
               ))}
             </ul>
           </section>
+
+          {project.result ? <ContentBlock title="Result" body={project.result} /> : null}
 
           <section className="mt-14">
             <h2 className="text-xl font-semibold text-white">Tech stack</h2>

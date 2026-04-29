@@ -41,6 +41,11 @@ export interface ProjectListItem {
   github_url: string
   featured: boolean
   order: number
+  /** Case study fields — optional when list endpoint omits them */
+  problem?: string
+  solution?: string
+  features?: string[]
+  result?: string
 }
 
 export interface ProjectDetail extends ProjectListItem {
@@ -48,6 +53,8 @@ export interface ProjectDetail extends ProjectListItem {
   problem: string
   solution: string
   features: string[]
+  /** Outcome / impact — omit when backend has not migrated yet */
+  result?: string
   screenshots: { id: string; url: string; caption: string | null }[]
 }
 

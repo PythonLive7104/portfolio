@@ -24,7 +24,8 @@ export function HeroSection({ profileImageUrl, profileImageAlt }: HeroSectionPro
               Available for SaaS &amp; product engineering
             </p>
             <h1 className="mt-8 bg-gradient-to-b from-white via-white to-zinc-400 bg-clip-text text-4xl font-semibold tracking-tight text-transparent sm:text-5xl lg:text-6xl lg:leading-[1.08]">
-              I build scalable products with React, Django, and DRF — and provide deployment support.
+              I build AI-powered SaaS products that handle payments, automation, and scale — so you can
+              focus on growth.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-zinc-400 sm:text-xl">
               Full-stack developer focused on subscription SaaS — crisp frontends, observable APIs, and
@@ -50,7 +51,7 @@ export function HeroSection({ profileImageUrl, profileImageAlt }: HeroSectionPro
                 to="/contact"
                 className="rounded-full border border-white/15 bg-white/[0.03] px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:border-white/25 hover:bg-white/[0.06]"
               >
-                Start a conversation
+                Let&apos;s build your SaaS MVP
               </Link>
             </div>
           </div>
