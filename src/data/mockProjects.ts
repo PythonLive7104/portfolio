@@ -46,7 +46,7 @@ export const mockTestimonials: Testimonial[] = [
   {
     id: 't3',
     quote:
-      'Our customers noticed the polish immediately. Your work is pleasing and satisfactory.',
+      'Our customers noticed the polish immediately. Thank you for your work.',
     author_name: 'Mr. David',
     author_role: 'Founder',
     author_company: 'CompetitorIQ',
