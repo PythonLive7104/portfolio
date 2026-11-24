@@ -31,7 +31,7 @@ export function ContactPage() {
               ) : (
                 <div>
                   <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">Email</p>
-                  <p className="mt-1 text-sm text-zinc-500">Set your email in Django admin → Site profile.</p>
+                  <p className="mt-1 text-sm text-zinc-500">Use the form and I will reply within one business day.</p>
                 </div>
               )}
               <div>

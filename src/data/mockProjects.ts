@@ -11,17 +11,25 @@ export const mockSiteProfile: SiteProfile = {
 
 export const techStackHome: TechBadge[] = [
   { id: '1', label: 'React', category: 'frontend' },
-  { id: '2', label: 'TypeScript', category: 'frontend' },
-  { id: '3', label: 'Tailwind CSS', category: 'frontend' },
-  { id: '4', label: 'Django', category: 'backend' },
-  { id: '5', label: 'Django REST Framework', category: 'backend' },
-  { id: '6', label: 'PostgreSQL', category: 'data' },
-  { id: '7', label: 'Redis', category: 'data' },
-  { id: '8', label: 'Stripe/Paystack', category: 'payments' },
-  { id: '9', label: 'OpenAI API', category: 'ai' },
-  { id: '10', label: 'Docker', category: 'ops' },
-  { id: '11', label: 'Celery', category: 'backend' },
-  { id: '12', label: 'AWS / Vercel', category: 'ops' },
+  { id: '2', label: 'Next.js', category: 'frontend' },
+  { id: '3', label: 'TypeScript', category: 'frontend' },
+  { id: '4', label: 'Tailwind CSS', category: 'frontend' },
+  { id: '5', label: 'Python', category: 'backend' },
+  { id: '6', label: 'Django', category: 'backend' },
+  { id: '7', label: 'Django REST Framework', category: 'backend' },
+  { id: '8', label: 'Celery', category: 'backend' },
+  { id: '9', label: 'Claude API', category: 'ai' },
+  { id: '10', label: 'OpenAI API', category: 'ai' },
+  { id: '11', label: 'RAG', category: 'ai' },
+  { id: '12', label: 'AI agents', category: 'ai' },
+  { id: '13', label: 'n8n', category: 'automation' },
+  { id: '14', label: 'Webhooks', category: 'automation' },
+  { id: '15', label: 'PostgreSQL', category: 'data' },
+  { id: '16', label: 'Redis', category: 'data' },
+  { id: '17', label: 'Stripe / Paystack', category: 'payments' },
+  { id: '18', label: 'Docker', category: 'ops' },
+  { id: '19', label: 'CI/CD', category: 'ops' },
+  { id: '20', label: 'AWS / Vercel', category: 'ops' },
 ]
 
 export const mockTestimonials: Testimonial[] = [
@@ -56,6 +64,92 @@ export const mockTestimonials: Testimonial[] = [
 
 export const mockProjects: ProjectDetail[] = [
   {
+    id: 'p4',
+    slug: 'invoiceparsed',
+    title: 'InvoiceParsed',
+    short_description:
+      'AI extraction for invoices, receipts and bank statements — with purchase-order matching and approvals for finance teams.',
+    image_url: '/images/invoiceparsed-cover.svg',
+    tech_stack: [
+      { id: 't1', label: 'Django' },
+      { id: 't2', label: 'DRF' },
+      { id: 't3', label: 'AI extraction' },
+      { id: 't4', label: 'PostgreSQL' },
+      { id: 't5', label: 'Redis' },
+      { id: 't6', label: 'Celery' },
+      { id: 't7', label: 'REST API' },
+      { id: 't8', label: 'Webhooks' },
+    ],
+    live_demo_url: 'https://invoiceparsed.com',
+    github_url: '',
+    featured: true,
+    order: 1,
+    overview:
+      'A production SaaS that turns any invoice into clean data in seconds. Upload a PDF or photo and get vendor, line items, taxes and totals as structured JSON or CSV — then match each invoice against its purchase order before it gets paid.',
+    problem:
+      'Finance teams still retype invoices into spreadsheets — on this product\u2019s own numbers, around six hours a week of a bookkeeper\u2019s time. Worse, a spreadsheet cannot enforce invoice-to-PO matching, the oldest control in accounts payable, so price rises and over-invoicing get approved and paid before anyone notices.',
+    solution:
+      'Built an AI extraction pipeline that reads messy scans, multi-page documents and unusual layouts, returning every field with a 0–100% confidence score for review. On top of extraction sits real accounts-payable control: supplier records, purchase orders with a separate approval step, and line-by-line invoice matching against tolerances the customer sets.',
+    features: [
+      'Field-perfect extraction: vendor, invoice number, dates, line items, subtotal, tax and total',
+      'PDF and image support across messy scans, multi-page invoices and unusual layouts',
+      'One-click export to Excel (.xlsx), QuickBooks-compatible CSV, or strict JSON',
+      'Per-field confidence scoring so low-certainty values get reviewed, not trusted blindly',
+      'Invoice-to-PO matching flags price rises, over-invoicing and unordered lines before payment',
+      'Supplier records with spend totals per vendor and currency, and duplicate detection on tax ID',
+      'Purchase orders with line items, taxes and delivery dates — raising an order is separate from approving it',
+      'Eight-role permission model; a discrepancy can only be accepted by an approver, with a written reason kept on record',
+      'REST API and webhooks so finance systems can pull extractions without a human in the loop',
+      'Multi-currency detection and private-by-design processing — no training on customer documents',
+    ],
+    result:
+      'Around five seconds average processing at 95%+ field accuracy on clear digital PDFs, with three-way invoice-to-PO checks. Shipped as a four-tier commercial product from a free plan up to $99/mo, with API and webhook access for finance ops teams.',
+    screenshots: [],
+  },
+  {
+    id: 'p5',
+    slug: 'trynobot',
+    title: 'TryNoBot',
+    short_description:
+      'Click-fraud protection for paid ad landing pages — every visitor scored 0–100 in real time, with the signals behind each decision.',
+    image_url: '/images/trynobot-cover.svg',
+    tech_stack: [
+      { id: 't1', label: 'Django' },
+      { id: 't2', label: 'DRF' },
+      { id: 't3', label: 'PostgreSQL' },
+      { id: 't4', label: 'Redis' },
+      { id: 't5', label: 'JA3/JA4' },
+      { id: 't6', label: 'nginx' },
+      { id: 't7', label: 'Cloudflare' },
+      { id: 't8', label: 'Node' },
+    ],
+    live_demo_url: 'https://trynobot.com',
+    github_url: '',
+    featured: true,
+    order: 2,
+    overview:
+      'Real-time bot and click-fraud detection for advertisers. A drop-in script scores every visitor to your ad landing pages from 0 to 100, catching proxies, datacenter traffic and automation before they drain the campaign budget — and showing the exact signals behind every verdict.',
+    problem:
+      'Advertisers pay for clicks that were never people. Bots, proxies and datacenter traffic quietly consume Google, Meta, TikTok and Microsoft ad budgets, and most protection tools block traffic without explaining why — which leaves the advertiser unable to dispute a charge or tune a rule with any confidence.',
+    solution:
+      'Built a real-time scoring service behind an async tracking tag: 40+ signals per visit and session, JA3/JA4 TLS fingerprinting beneath the user agent, and live proxy/VPN and recent-abuse reputation checks, resolving to one of four verdicts in under 10ms. Server-side snippets for PHP, Django, nginx, Cloudflare and Node let the decision run before the page ever renders.',
+    features: [
+      'Explainable 0–100 risk score on every click, with the exact signals that drove it',
+      'Server-side shield — drop-in snippet for PHP, Django, nginx, Cloudflare or Node blocks bots pre-render',
+      'JA3/JA4 TLS fingerprinting to identify clients beneath a spoofed user agent',
+      'Live IP reputation with real-time proxy, VPN and recent-abuse checks',
+      'Silent browser check that catches headless automation with no click from the visitor',
+      'Real-time traffic feed with classification and rule actions: allow, review, block or tag',
+      'Campaign analytics across traffic quality, sources, geos and devices',
+      'Conversion tracking that attributes revenue back to traffic quality, not just volume',
+      'Folder Guard locks sensitive paths such as /admin, /wp-login and /downloads',
+      'Filtering funnel showing what was checked, what reached the page, and why the rest was turned away',
+    ],
+    result:
+      'Sub-10ms decisions over 40+ signals per visit, four verdicts (human, suspicious, bot, fraud) and coverage across eight ad networks. A free, no-account exposure check doubles as the top of the acquisition funnel, with a 7-day trial behind it.',
+    screenshots: [],
+  },
+  {
     id: 'p1',
     slug: 'BounceHunter',
     title: 'BounceHunter Landing page',
@@ -73,7 +167,7 @@ export const mockProjects: ProjectDetail[] = [
     live_demo_url: 'https://bouncehunter.net',
     github_url: 'https://github.com/PythonLive7104/bouncehunter',
     featured: true,
-    order: 1,
+    order: 5,
     overview:
       'This is a landing page for BounceHunter, a tool that helps you analyze and optimize your email bounce rate.',
     problem:
@@ -142,7 +236,7 @@ export const mockProjects: ProjectDetail[] = [
     live_demo_url: 'https://jobcraftsai.net',
     github_url: 'https://github.com/PythonLive7104/jobcraftsAI',
     featured: true,
-    order: 2,
+    order: 3,
     overview:
       'AI-assisted resume and interview prep with subscription tiers — OpenAI workflows plus Paystack for recurring revenue.',
     problem:
@@ -210,7 +304,7 @@ export const mockProjects: ProjectDetail[] = [
     live_demo_url: 'https://github.com/PythonLive7104/competitorIQ',
     github_url: 'https://github.com/PythonLive7104/competitorIQ',
     featured: true,
-    order: 3,
+    order: 4,
     overview:
       'An advanced tool for competitor analysis and intelligence.',
     problem:

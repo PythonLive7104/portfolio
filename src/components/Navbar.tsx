@@ -15,6 +15,7 @@ export function Navbar() {
   const items = useMemo(() => {
     const base: { to: string; label: string }[] = [
       { to: '/', label: 'Home' },
+      { to: '/services', label: 'Services' },
       { to: '/projects', label: 'Projects' },
       { to: '/about', label: 'About' },
     ]

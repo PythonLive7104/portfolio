@@ -83,14 +83,20 @@ export function ProjectDetailPage() {
                 />
               </svg>
             </a>
-            <a
-              href={project.github_url}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/10"
-            >
-              View on GitHub
-            </a>
+            {project.github_url ? (
+              <a
+                href={project.github_url}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/10"
+              >
+                View on GitHub
+              </a>
+            ) : (
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-5 py-2.5 text-sm font-medium text-zinc-500">
+                Private commercial codebase
+              </span>
+            )}
           </div>
         </div>
       </header>
@@ -103,7 +109,7 @@ export function ProjectDetailPage() {
           </>
         ) : (
           <div className="flex h-full min-h-[200px] items-center justify-center text-sm text-zinc-500">
-            No hero image — add “Image” on the project or an image under Screenshots in admin.
+            Screenshots for this project are available on request.
           </div>
         )}
       </div>
@@ -141,7 +147,7 @@ export function ProjectDetailPage() {
             </div>
           </section>
 
-          <section className="mt-16">
+          <section className={project.screenshots.length > 0 ? 'mt-16' : 'hidden'}>
             <h2 className="text-xl font-semibold text-white">Screenshots</h2>
             <div className="mt-8 grid gap-6 sm:grid-cols-2">
               {project.screenshots.map((s) => (

@@ -21,16 +21,19 @@ export function HeroSection({ profileImageUrl, profileImageAlt }: HeroSectionPro
           <div className={hasPortrait ? 'min-w-0 max-w-3xl' : 'max-w-3xl'}>
             <p className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs font-medium text-sky-300/90 shadow-[var(--shadow-glow)] backdrop-blur-sm">
               <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
-              Available for SaaS &amp; product engineering
+              Available for contracts — US, UK, Canada &amp; Australia
             </p>
-            <h1 className="mt-8 bg-gradient-to-b from-white via-white to-zinc-400 bg-clip-text text-4xl font-semibold tracking-tight text-transparent sm:text-5xl lg:text-6xl lg:leading-[1.08]">
-              I build AI-powered SaaS products that handle payments, automation, and scale — so you can
-              focus on growth.
+            <p className="mt-6 text-sm font-medium uppercase tracking-[0.18em] text-zinc-500">
+              AI Software Developer
+            </p>
+            <h1 className="mt-3 bg-gradient-to-b from-white via-white to-zinc-400 bg-clip-text text-4xl font-semibold tracking-tight text-transparent sm:text-5xl lg:text-6xl lg:leading-[1.08]">
+              I build the SaaS platforms, AI tools, and automations that run a business — not demos that
+              stop at the prototype.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-zinc-400 sm:text-xl">
-              Full-stack developer focused on subscription SaaS — crisp frontends, observable APIs, and
-              integrations that hold up in production. From first pixel to first webhook, shipped with
-              care.
+              SaaS, web applications &amp; business automation. Python, Django and React on the inside;
+              Claude and OpenAI where they genuinely earn their place. I ship production systems with
+              billing, permissions, and the failure modes handled — then stay on to run them.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <Link
@@ -48,10 +51,10 @@ export function HeroSection({ profileImageUrl, profileImageAlt }: HeroSectionPro
                 </svg>
               </Link>
               <Link
-                to="/contact"
+                to="/services"
                 className="rounded-full border border-white/15 bg-white/[0.03] px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:border-white/25 hover:bg-white/[0.06]"
               >
-                Let&apos;s build your SaaS MVP
+                Services &amp; pricing
               </Link>
             </div>
           </div>
@@ -77,9 +80,9 @@ export function HeroSection({ profileImageUrl, profileImageAlt }: HeroSectionPro
 
         <div className="mt-16 grid gap-4 sm:grid-cols-3">
           {[
-            { k: 'Stack', v: 'React · Django · DRF' },
-            { k: 'Focus', v: 'B2B SaaS & billing' },
-            { k: 'Delivery', v: 'API-first, observable' },
+            { k: 'Stack', v: 'Django · DRF · React · Next.js' },
+            { k: 'AI', v: 'Claude · OpenAI · RAG · agents' },
+            { k: 'Shipped', v: '2 live SaaS products' },
           ].map((item) => (
             <div
               key={item.k}

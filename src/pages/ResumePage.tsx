@@ -55,10 +55,9 @@ export function ResumePage() {
           </div>
         ) : (
           <div className="mt-10 rounded-2xl border border-white/10 bg-zinc-900/40 px-6 py-12 text-center text-zinc-400">
-            <p>No resume has been uploaded yet.</p>
+            <p>A CV is available on request.</p>
             <p className="mt-2 text-sm text-zinc-500">
-              Add a PDF under <span className="font-mono text-zinc-400">Site profile → Resume</span> in Django
-              admin.
+              Get in touch and I&apos;ll send it over, along with references from recent engagements.
             </p>
           </div>
         )}

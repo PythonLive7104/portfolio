@@ -6,23 +6,33 @@ export function AboutPage() {
       <div className="mx-auto max-w-6xl">
         <p className="text-sm font-medium uppercase tracking-wider text-violet-400/90">About</p>
         <h1 className="mt-3 max-w-3xl text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
-          Building dependable SaaS with a design-led mindset.
+          I build software that has to survive contact with real customers.
         </h1>
         <div className="mt-10 grid gap-12 lg:grid-cols-2 lg:gap-16">
           <div className="space-y-6 text-lg leading-relaxed text-zinc-400">
             <p>
-              I&apos;m a full-stack developer who splits time between expressive React interfaces and disciplined
-              Django services. SaaS is my focus — subscription logic, team permissions, integrations, and the long
-              tail of production concerns that turn a prototype into a business.
+              I&apos;m an AI software developer working with startups, agencies and established businesses in the
+              US, UK, Canada and Australia. My work sits where SaaS, business automation and applied AI meet —
+              Python and Django on the backend, React and Next.js on the front, and Claude or OpenAI wherever a
+              model genuinely does the job better than code.
             </p>
             <p>
-              On the frontend I care about perceived performance, accessible patterns, and interfaces that feel as
-              polished as the products you admire. On the backend I lean on Django REST Framework for clear
-              boundaries, explicit serializers, and APIs that mobile and web clients can trust.
+              The difference between a demo and a product is everything that happens after launch: billing edge
+              cases, permission boundaries, webhook replays, a bookkeeper who pastes a scanned PDF you never
+              anticipated. I build for that second category, because I run my own products and live with those
+              decisions.
             </p>
             <p>
-              Whether you need a greenfield build, a rewrite, or targeted upgrades to your billing and ops stack,
-              I work in tight feedback loops with product and design.
+              <span className="text-zinc-300">InvoiceParsed</span> extracts invoices, receipts and statements into
+              structured data and matches them against purchase orders before payment.{' '}
+              <span className="text-zinc-300">TryNoBot</span> scores every visitor to an ad landing page in under
+              ten milliseconds to stop advertisers paying for bot clicks. Both are live, both take payment, and
+              both taught me more about production software than any amount of client work alone.
+            </p>
+            <p>
+              I work in fixed-price phases against a written scope, send progress you can click rather than status
+              updates, and document the edges before handover. Most clients stay on after the first project —
+              which is the only review metric I actually trust.
             </p>
           </div>
           <div className="relative">

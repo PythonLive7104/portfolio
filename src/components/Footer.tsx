@@ -88,7 +88,7 @@ export function Footer() {
               !profile.github_url &&
               !profile.linkedin_url &&
               !profile.contact_email ? (
-                <li className="text-zinc-600">Add links in Django admin → Site profile.</li>
+                <li className="text-zinc-600">Links coming soon.</li>
               ) : null}
             </ul>
           </div>

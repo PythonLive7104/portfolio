@@ -42,14 +42,15 @@ const caps = [
     ),
   },
   {
-    title: 'AI integration',
+    title: 'AI engineering',
     summary:
       'Practical AI features: augment workflows without handing your data to black-box prompts or silent failures.',
     details: [
-      'LLM-backed summaries, classification, and drafting with clear user review steps and fallbacks.',
-      'Retrieval-style patterns: chunking, metadata filters, and source attribution so answers stay grounded.',
-      'Cost and latency awareness: caching, batching, and model selection appropriate to the task.',
-      'Privacy posture: PII handling, retention limits, and environment separation for dev vs production.',
+      'Claude and OpenAI APIs for extraction, classification, summarisation and drafting — with confidence scoring and review steps.',
+      'Retrieval-augmented generation: chunking, metadata filters, and source attribution so answers stay grounded and checkable.',
+      'AI agents with tool calling, scoped permissions, and hard limits on what they can act on unsupervised.',
+      'Cost and latency awareness: caching, batching, and model selection matched to the task rather than the headline.',
+      'Privacy posture: PII handling, retention limits, no training on customer data, and dev/production separation.',
     ],
     icon: (
       <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -79,6 +80,48 @@ const caps = [
           strokeLinejoin="round"
           strokeWidth={1.5}
           d="M3 10h18M7 15h1m4 0h1m-7 4h12a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+        />
+      </svg>
+    ),
+  },
+  {
+    title: 'Automation & integrations',
+    summary:
+      'Connecting the tools a business already runs on, so work stops being copied between tabs by hand.',
+    details: [
+      'Workflow automation with n8n, webhooks and scheduled jobs across CRM, email, accounting and storage.',
+      'Third-party API integrations built defensively: retries with backoff, idempotency keys, and partial-failure handling.',
+      'Human-in-the-loop approval steps wherever an automated mistake would be expensive to unwind.',
+      'Execution logs and alerting so a broken automation surfaces immediately instead of silently skipping work.',
+    ],
+    icon: (
+      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M13 10V3L4 14h7v7l9-11h-7z"
+        />
+      </svg>
+    ),
+  },
+  {
+    title: 'Delivery & operations',
+    summary:
+      'Shipping is the start, not the finish. Production software needs to be deployable, observable and transferable.',
+    details: [
+      'Dockerised environments and CI/CD pipelines so deploys are routine rather than an event.',
+      'Cloud deployment on AWS, Vercel or a plain Linux VPS — chosen on your budget and ops appetite, not fashion.',
+      'Structured logging, error tracking and uptime monitoring wired up before launch, not after the first outage.',
+      'Written handover: architecture notes, runbook, environment variables, and failure modes documented.',
+    ],
+    icon: (
+      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.5}
+          d="M5 12a7 7 0 1114 0m-14 0a7 7 0 0014 0m-14 0H3m18 0h-2M12 5V3m0 18v-2m6.364-12.364l1.414-1.414M4.222 19.778l1.414-1.414m0-12.728L4.222 4.222m15.556 15.556l-1.414-1.414"
         />
       </svg>
     ),

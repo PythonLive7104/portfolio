@@ -31,8 +31,8 @@ export function ProjectsPage() {
         <p className="text-sm font-medium uppercase tracking-wider text-sky-400/90">Portfolio</p>
         <h1 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">Projects</h1>
         <p className="mt-4 max-w-2xl text-lg text-zinc-400">
-          A curated set of SaaS builds from recent collaborations — swap this grid for a DRF list endpoint when your
-          CMS is live.
+          Live products and client builds, written up as case studies — the business problem, what I built,
+          and what it changed. Two of these are my own SaaS products, still running and still taking payment.
         </p>
         <div className="mt-14">
           {error && (
