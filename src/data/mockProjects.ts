@@ -69,7 +69,7 @@ export const mockProjects: ProjectDetail[] = [
     title: 'InvoiceParsed',
     short_description:
       'AI extraction for invoices, receipts and bank statements — with purchase-order matching and approvals for finance teams.',
-    image_url: '/images/invoiceparsed-cover.svg',
+    image_url: '/images/invoiceparsed-cover.png',
     tech_stack: [
       { id: 't1', label: 'Django' },
       { id: 't2', label: 'DRF' },
@@ -104,7 +104,14 @@ export const mockProjects: ProjectDetail[] = [
     ],
     result:
       'Around five seconds average processing at 95%+ field accuracy on clear digital PDFs, with three-way invoice-to-PO checks. Shipped as a four-tier commercial product from a free plan up to $99/mo, with API and webhook access for finance ops teams.',
-    screenshots: [],
+    screenshots: [
+      {
+        id: 's1',
+        url: '/images/invoiceparsed-extract.png',
+        caption:
+          'Extraction from a creased receipt photographed on a desk — every field returned with its own confidence score. Due date and payment terms read 0% because they are genuinely absent from the document: missing data is flagged for review, not invented.',
+      },
+    ],
   },
   {
     id: 'p5',
@@ -112,7 +119,7 @@ export const mockProjects: ProjectDetail[] = [
     title: 'TryNoBot',
     short_description:
       'Click-fraud protection for paid ad landing pages — every visitor scored 0–100 in real time, with the signals behind each decision.',
-    image_url: '/images/trynobot-cover.svg',
+    image_url: '/images/trynobot-cover.png',
     tech_stack: [
       { id: 't1', label: 'Django' },
       { id: 't2', label: 'DRF' },
@@ -147,7 +154,18 @@ export const mockProjects: ProjectDetail[] = [
     ],
     result:
       'Sub-10ms decisions over 40+ signals per visit, four verdicts (human, suspicious, bot, fraud) and coverage across eight ad networks. A free, no-account exposure check doubles as the top of the acquisition funnel, with a 7-day trial behind it.',
-    screenshots: [],
+    screenshots: [
+      {
+        id: 's1',
+        url: '/images/trynobot-dashboard.png',
+        caption: 'Workspace dashboard — ad spend protected, traffic quality and fraud counts over the selected window',
+      },
+      {
+        id: 's2',
+        url: '/images/trynobot-funnel.png',
+        caption: 'Filtering funnel — what the engine did with each visit, plus visitors and traffic quality over time',
+      },
+    ],
   },
   {
     id: 'p1',

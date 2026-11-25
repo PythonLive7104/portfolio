@@ -14,8 +14,9 @@ export function ContactPage() {
               Tell me about what you&apos;re building.
             </h1>
             <p className="mt-4 text-lg leading-relaxed text-zinc-400">
-              Share your goals, stack, and timeline. This form is intentionally frontend-only — map fields to a
-              Django view or DRF serializer when you connect your API.
+              Tell me what the problem is costing you today — in hours, errors, or lost revenue. I&apos;ll reply
+              with an honest view of whether I&apos;m the right person for it, a rough price, and what I&apos;d
+              need to know to be precise. No pitch deck, no pressure.
             </p>
             <div className="mt-10 space-y-4 rounded-2xl border border-white/[0.06] bg-zinc-900/30 p-6">
               {profile?.contact_email ? (
@@ -36,7 +37,24 @@ export function ContactPage() {
               )}
               <div>
                 <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">Availability</p>
-                <p className="mt-1 text-sm text-zinc-400">New projects starting Q2 — limited slots.</p>
+                <p className="mt-1 flex items-center gap-2 text-sm font-medium text-emerald-300/90">
+                  <span className="h-1.5 w-1.5 shrink-0 animate-pulse rounded-full bg-emerald-400" aria-hidden />
+                  Taking on new projects now
+                </p>
+                <p className="mt-1 text-sm text-zinc-400">
+                  Most builds start within 1–2 weeks of an agreed scope. Short, well-defined work can usually
+                  start sooner.
+                </p>
+              </div>
+              <div>
+                <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">Response time</p>
+                <p className="mt-1 text-sm text-zinc-400">Within one business day, every time.</p>
+              </div>
+              <div>
+                <p className="text-xs font-medium uppercase tracking-wider text-zinc-500">Working hours</p>
+                <p className="mt-1 text-sm text-zinc-400">
+                  WAT (UTC+1) — full overlap with UK and EU hours, and with US mornings.
+                </p>
               </div>
             </div>
           </div>

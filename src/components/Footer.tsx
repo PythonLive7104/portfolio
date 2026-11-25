@@ -18,8 +18,8 @@ export function Footer() {
               SolomonPortfolio
             </Link>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-zinc-400">
-              Full-stack engineer building SaaS products with React, Django, and Django REST Framework —
-              from polished UX to resilient APIs.
+              AI software developer building SaaS platforms, business automation and Django REST APIs
+              for clients in the US, UK, Canada and Australia.
             </p>
           </div>
           <div>

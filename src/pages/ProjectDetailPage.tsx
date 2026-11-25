@@ -104,7 +104,7 @@ export function ProjectDetailPage() {
       <div className="relative aspect-[21/9] max-h-[420px] w-full overflow-hidden bg-zinc-900">
         {project.image_url ? (
           <>
-            <img src={project.image_url} alt="" className="h-full w-full object-cover object-center" />
+            <img src={project.image_url} alt="" className="h-full w-full object-cover object-top" />
             <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 to-transparent" />
           </>
         ) : (
@@ -149,7 +149,11 @@ export function ProjectDetailPage() {
 
           <section className={project.screenshots.length > 0 ? 'mt-16' : 'hidden'}>
             <h2 className="text-xl font-semibold text-white">Screenshots</h2>
-            <div className="mt-8 grid gap-6 sm:grid-cols-2">
+            <div
+              className={`mt-8 grid gap-6 ${
+                project.screenshots.length === 1 ? 'max-w-4xl' : 'sm:grid-cols-2'
+              }`}
+            >
               {project.screenshots.map((s) => (
                 <figure
                   key={s.id}
