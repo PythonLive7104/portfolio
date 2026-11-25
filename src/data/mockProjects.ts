@@ -6,7 +6,7 @@ export const mockSiteProfile: SiteProfile = {
   resume_url: null,
   github_url: 'https://github.com/PythonLive7104',
   linkedin_url: 'https://www.linkedin.com/in/olatunjisolomon/',
-  contact_email: 'olatunjiayomi18@gmail.com',
+  contact_email: 'solomonportfolio26@gmail.com',
 }
 
 export const techStackHome: TechBadge[] = [
